@@ -25,11 +25,11 @@
 	</repositories>
 	<properties>
 		<embeddedGroupIds>
-			javax.enterprise|org.apache.tika|org.apache.lucene|commons-digester|javax.transaction|org.hibernate.javax.persistence|javax.jcr|org.springframework|org.jahia.server|org.mvel|joda-time|com.google.protobuf|javax|org.javassist|org.hibernate|org.apache|org.jboss.logging|dom4j|antlr|org.apache.jackrabbit|commons-io|concurrent|org.apache.derby|commons-dbcp|commons-pool|commons-lang|commons-beanutils|commons-collections|xalan|cglib|asm|org.jbpm|org.kie|org.drools|com.thoughtworks.xstream
+			org.hibernate.common|javax.inject|javax.enterprise|org.apache.tika|org.apache.lucene|commons-digester|javax.transaction|org.hibernate.javax.persistence|javax.jcr|org.springframework|org.jahia.server|org.mvel|joda-time|com.google.protobuf|javax|org.javassist|org.hibernate|org.apache|org.jboss.logging|dom4j|antlr|org.apache.jackrabbit|commons-io|concurrent|org.apache.derby|commons-dbcp|commons-pool|commons-lang|commons-beanutils|commons-collections|xalan|cglib|asm|org.jbpm|org.kie|org.drools|com.thoughtworks.xstream
 
 		</embeddedGroupIds>
 		<commaSeparatedembeddedGroupIds>
-			javax.enterprise|org.apache.tika,org.apache.lucene,commons-digester,javax.transaction,org.hibernate.javax.persistence,javax.jcr,org.springframework,org.jahia.server,org.mvel,joda-time,com.google.protobuf,javax,org.javassist,org.hibernate,org.apache,org.jboss.logging,dom4j,antlr,org.apache.jackrabbit,commons-io,concurrent,org.apache.derby,commons-dbcp,commons-pool,commons-lang,commons-beanutils,commons-collections,xalan,cglib,asm,org.jbpm,org.kie,org.drools,com.thoughtworks.xstream
+			org.hibernate.common,javax.inject,javax.enterprise,org.apache.tika,org.apache.lucene,commons-digester,javax.transaction,org.hibernate.javax.persistence,javax.jcr,org.springframework,org.jahia.server,org.mvel,joda-time,com.google.protobuf,javax,org.javassist,org.hibernate,org.apache,org.jboss.logging,dom4j,antlr,org.apache.jackrabbit,commons-io,concurrent,org.apache.derby,commons-dbcp,commons-pool,commons-lang,commons-beanutils,commons-collections,xalan,cglib,asm,org.jbpm,org.kie,org.drools,com.thoughtworks.xstream
 
 		</commaSeparatedembeddedGroupIds>
 	</properties>
@@ -251,7 +251,6 @@
 							org.kie.spring.persistence,
 							org.mvel2,
 							org.springframework.beans.factory;version="3.2.8",
-							org.springframework.cor.e.io;version="3.2.8",
 							org.springframework.core.io;version="3.2.8",
 							org.springframework.transaction;version="3.2.8",
 							org.springframework.transaction.support;version="3.2.8",
@@ -260,7 +259,7 @@
 					</instructions>
 				</configuration>
 			</plugin>
-			<!-- plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<inherited>false</inherited>
@@ -286,7 +285,33 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin-->
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<inherited>false</inherited>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<silent>true</silent>
+							<outputDirectory>${project.basedir}/libs</outputDirectory>
+							<stripVersion>false</stripVersion>
+							<failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<includeGroupIds>${commaSeparatedembeddedGroupIds}</includeGroupIds>
+							<excludeTransitive>false</excludeTransitive>
+							<excludeScope>provided</excludeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -306,6 +331,11 @@
 			<artifactId>cglib</artifactId>
 			<groupId>cglib</groupId>
 			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<artifactId>cglib-nodep</artifactId>
+			<groupId>cglib</groupId>
+			<version>2.2.2</version>
 		</dependency>
 	</dependencies>
 </project>
