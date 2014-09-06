@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1409976476350
+Bnd-LastModified: 1410013970138
 Build-Jdk: 1.7.0_51
 Built-By: ampie
 Bundle-ClassPath: .,libs/jahia-impl-7.0.0.0.jar,libs/jahia-api-7.0.0.0.j
@@ -542,14 +542,14 @@ Export-Package: com.thoughtworks.xstream;version="1.4.4",javassist;versi
  ework.beans.factory;version="3.2.8",org.springframework.core.io;version
  ="3.2.8",org.springframework.transaction;version="3.2.8",org.springfram
  ework.transaction.support;version="3.2.8";uses:="org.springframework.be
- ans.factory,org.springframework.transaction",org.hibernate.annotations.
- common;version="4.0.2.Final",org.springframework.cor.e.io;version="3.2.
- 8",net.sf.cglib.asm;version="2.2.2",javax.inject;version="1.0.0",net.sf
- .cglib.asm.signature;version="2.2.2"
-Import-Package: javax.imageio.spi,org.xml.sax,org.w3c.dom,javax.xml.tran
- sform.dom,javax.xml.parsers,javax.security.auth.login,javax.sql,javax.s
- ecurity.auth.callback,javax.naming,javax.xml.transform,javax.xml.transf
- orm.stream,javax.security.auth,org.xml.sax.helpers,javax.security.auth.
- spi,org.slf4j;version="[1.1.6,2)"
+ ans.factory,org.springframework.transaction",org.springframework.cor.e.
+ io;version="3.2.8",org.hibernate.annotations.common;version="4.0.2.Fina
+ l",javax.inject;version="1.0.0",net.sf.cglib.asm.signature;version="2.2
+ .2",net.sf.cglib.asm;version="2.2.2"
+Import-Package: javax.security.auth,javax.security.auth.login,org.xml.sa
+ x,org.slf4j;version="[1.1.6,2)",javax.security.auth.callback,javax.secu
+ rity.auth.spi,javax.imageio.spi,org.xml.sax.helpers,javax.xml.transform
+ ,org.w3c.dom,javax.sql,javax.xml.transform.stream,javax.xml.parsers,jav
+ ax.xml.transform.dom,javax.naming
 JBOSS_HOME: /opt/jboss-5.1.0.GA
 Tool: Bnd-2.1.0.20130426-122213
