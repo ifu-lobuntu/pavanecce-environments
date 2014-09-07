@@ -23,16 +23,6 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	<properties>
-		<embeddedGroupIds>
-			org.hibernate.common|javax.inject|javax.enterprise|org.apache.tika|org.apache.lucene|commons-digester|javax.transaction|org.hibernate.javax.persistence|javax.jcr|org.springframework|org.jahia.server|org.mvel|joda-time|com.google.protobuf|javax|org.javassist|org.hibernate|org.apache|org.jboss.logging|dom4j|antlr|org.apache.jackrabbit|commons-io|concurrent|org.apache.derby|commons-dbcp|commons-pool|commons-lang|commons-beanutils|commons-collections|xalan|cglib|asm|org.jbpm|org.kie|org.drools|com.thoughtworks.xstream
-
-		</embeddedGroupIds>
-		<commaSeparatedembeddedGroupIds>
-			org.hibernate.common,javax.inject,javax.enterprise,org.apache.tika,org.apache.lucene,commons-digester,javax.transaction,org.hibernate.javax.persistence,javax.jcr,org.springframework,org.jahia.server,org.mvel,joda-time,com.google.protobuf,javax,org.javassist,org.hibernate,org.apache,org.jboss.logging,dom4j,antlr,org.apache.jackrabbit,commons-io,concurrent,org.apache.derby,commons-dbcp,commons-pool,commons-lang,commons-beanutils,commons-collections,xalan,cglib,asm,org.jbpm,org.kie,org.drools,com.thoughtworks.xstream
-
-		</commaSeparatedembeddedGroupIds>
-	</properties>
 	<build>
 		<plugins>
 			<plugin>
@@ -42,7 +32,7 @@
 				<configuration>
 					<manifestLocation>META-INF</manifestLocation>
 					<instructions>
-						<Embed-Dependency>groupId=${embeddedGroupIds};artifactId=!kie-bom</Embed-Dependency>
+						<Embed-Dependency>groupId=${pavanecce.environment.embeddedGroupIds};artifactId=!kie-bom</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
 						<Embed-Directory>libs</Embed-Directory>
 						<Embed-StripGroup>true</Embed-StripGroup>
@@ -279,7 +269,7 @@
 							<overWriteReleases>false</overWriteReleases>
 							<overWriteSnapshots>false</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
-							<includeGroupIds>${commaSeparatedembeddedGroupIds}</includeGroupIds>
+							<includeGroupIds>${pavanecce.environment.commaSeparatedembeddedGroupIds}</includeGroupIds>
 							<excludeTransitive>false</excludeTransitive>
 							<excludeScope>provided</excludeScope>
 						</configuration>
@@ -305,7 +295,7 @@
 							<overWriteReleases>false</overWriteReleases>
 							<overWriteSnapshots>false</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
-							<includeGroupIds>${commaSeparatedembeddedGroupIds}</includeGroupIds>
+							<includeGroupIds>${pavanecce.environment.commaSeparatedembeddedGroupIds}</includeGroupIds>
 							<excludeTransitive>false</excludeTransitive>
 							<excludeScope>provided</excludeScope>
 						</configuration>

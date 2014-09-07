@@ -4,3 +4,6 @@ target
 test-output
 libs
 /bin
+.classpath
+MANIFEST.MF
+build.properties
