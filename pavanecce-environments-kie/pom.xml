@@ -3,17 +3,12 @@
 	<parent>
 		<groupId>org.pavanecce</groupId>
 		<artifactId>pavanecce-environments-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.1.0-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>pavanecce-environments-kie</artifactId>
 	<packaging>bundle</packaging>
-	<properties>
-		<jbpm.version>6.1.1-SNAPSHOT</jbpm.version>
-		<uberfire.version>6.1.1-SNAPSHOT</uberfire.version>
-	</properties>
-
 	<repositories>
 		<repository>
 			<id>jboss-public-repository-group</id>
@@ -30,17 +25,17 @@
 			</snapshots>
 		</repository>
 	</repositories>
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.kie</groupId>
-            <artifactId>kie-parent-with-dependencies</artifactId>
-            <version>6.1.1-SNAPSHOT</version>
-            <scope>import</scope>
-            <type>pom</type>
-        </dependency>   
-    </dependencies>
-</dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.kie</groupId>
+				<artifactId>kie-parent-with-dependencies</artifactId>
+				<version>6.2.0-SNAPSHOT</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>
@@ -330,17 +325,10 @@
 		</dependency>
 		<!-- TODO This is a problem. Jahia uses cglib 2.2 along with an incompatible 
 			version of ASM - 4.1 -->
-		<!--  dependency>
-			<artifactId>cglib</artifactId>
-			<groupId>cglib</groupId>
-			<version>3.1</version>
-		<version>${jbpm.version}</version>
-</dependency>
-		<dependency>
-			<artifactId>cglib-nodep</artifactId>
-			<groupId>cglib</groupId>
-			<version>2.2.2</version>
-		</dependency-->
+		<!-- dependency> <artifactId>cglib</artifactId> <groupId>cglib</groupId> 
+			<version>3.1</version> <version>${jbpm.version}</version> </dependency> <dependency> 
+			<artifactId>cglib-nodep</artifactId> <groupId>cglib</groupId> <version>2.2.2</version> 
+			</dependency -->
 		<dependency>
 			<groupId>org.apache</groupId>
 			<artifactId>jackrabbit-ocm</artifactId>
@@ -363,132 +351,145 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-        <dependency>
-            <groupId>javax.jcr</groupId>
-            <artifactId>jcr</artifactId>
-            <version>2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.jackrabbit</groupId>
-            <artifactId>jackrabbit-api</artifactId>
-            <version>2.4.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.jackrabbit</groupId>
-            <artifactId>jackrabbit-core</artifactId>
-            <version>2.4.5</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.derby</groupId>
-                    <artifactId>derby</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>commons-dbcp</groupId>
-                    <artifactId>commons-dbcp</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+		<dependency>
+			<groupId>javax.jcr</groupId>
+			<artifactId>jcr</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.jackrabbit</groupId>
+			<artifactId>jackrabbit-api</artifactId>
+			<version>2.4.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.jackrabbit</groupId>
+			<artifactId>jackrabbit-core</artifactId>
+			<version>2.4.5</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.derby</groupId>
+					<artifactId>derby</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-dbcp</groupId>
+					<artifactId>commons-dbcp</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
-<!--All the following dependencies were copied from jbpm-console-ng-->
-        <dependency>
-            <groupId>org.kie</groupId>
-            <artifactId>kie-ci</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.ant</groupId>
-                    <artifactId>ant</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+		<!--All the following dependencies were copied from jbpm-console-ng -->
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-ci</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.ant</groupId>
+          <artifactId>ant</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <scope>runtime</scope>
+    </dependency>
 
-        <!-- Manstis hackathon -->
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-wb-scorecard-xls-editor-client</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-services-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-kie-services</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-services-cdi</artifactId>
+    </dependency>
 
-        <!-- jBPM Console Panels -->
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-human-tasks-client</artifactId>
-        </dependency>
+    <!-- Manstis hackathon -->
+    <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-wb-scorecard-xls-editor-client</artifactId>
+    </dependency>
+
+    <!-- jBPM Console Panels -->
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-human-tasks-client</artifactId>
+    </dependency>
 
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-human-tasks-backend</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jboss-transaction-api_1.1_spec</artifactId>
-                    <groupId>org.jboss.spec.javax.transaction</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-human-tasks-backend</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+          <groupId>org.jboss.spec.javax.transaction</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
 
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-human-tasks-admin-client</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-human-tasks-admin-client</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-human-tasks-admin-backend</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-human-tasks-admin-backend</artifactId>
+    </dependency>
 
-         <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-human-tasks-forms-client</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-human-tasks-forms-client</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-human-tasks-forms-backend</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-human-tasks-forms-backend</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-business-domain-client</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-business-domain-client</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-business-domain-backend</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-business-domain-backend</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-process-runtime-client</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-process-runtime-client</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-process-runtime-backend</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-process-runtime-backend</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-executor-service-client</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-executor-service-client</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-executor-service-backend</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-executor-service-backend</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-console-ng-bpm-home-client</artifactId>
-        </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-bpm-home-client</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>org.jbpm</groupId>
@@ -496,14 +497,25 @@
     </dependency>
 
     <dependency>
-        <groupId>org.jbpm</groupId>
-        <artifactId>jbpm-console-ng-asset-mgmt-client</artifactId>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-asset-mgmt-backend</artifactId>
     </dependency>
-    
+  
+    <dependency>  
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-documents-client</artifactId>
+    </dependency>
+
     <dependency>
-        <groupId>org.jbpm</groupId>
-        <artifactId>jbpm-console-ng-asset-mgmt-backend</artifactId>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-documents-backend</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-console-ng-documents-api</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>org.drools</groupId>
       <artifactId>drools-wb-workitems-editor-client</artifactId>
@@ -512,6 +524,16 @@
     <dependency>
       <groupId>org.drools</groupId>
       <artifactId>drools-wb-workitems-editor-backend</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-form-modeler-document</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.jbpm</groupId>
+        <artifactId>jbpm-console-ng-documents-client</artifactId>
     </dependency>
 
     <!-- jBPM Designer -->
@@ -547,6 +569,28 @@
         </exclusion>
       </exclusions>
     </dependency>
+
+    <!-- UberFire Extension -->
+    <dependency>
+      <groupId>org.kie.uberfire</groupId>
+      <artifactId>kie-uberfire-metadata-commons-io</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.kie.uberfire</groupId>
+      <artifactId>kie-uberfire-metadata-backend-lucene</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.kie.uberfire</groupId>
+      <artifactId>kie-uberfire-widgets-commons</artifactId>
+    </dependency>
+ 
+    <dependency>
+      <groupId>org.kie.uberfire</groupId>
+      <artifactId>kie-uberfire-widgets-service-backend</artifactId>
+    </dependency>
+ 
 
     <!-- UberFire -->
     <dependency>
@@ -620,28 +664,6 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
-    </dependency>
-    <!-- This must be placed above com.google.gwt:gwt-dev to override the
-      Jetty that is present there -->
-    <dependency>
-      <groupId>org.mortbay.jetty</groupId>
-      <artifactId>jetty</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.mortbay.jetty</groupId>
-      <artifactId>jetty-plus</artifactId>
-      <exclusions>
-        <exclusion>
-          <artifactId>geronimo-spec-jta</artifactId>
-          <groupId>geronimo-spec</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-    <dependency>
-      <groupId>org.mortbay.jetty</groupId>
-      <artifactId>jetty-naming</artifactId>
     </dependency>
 
     <!-- Weld Modules -->
@@ -717,9 +739,15 @@
       <groupId>org.eclipse</groupId>
       <artifactId>org.eclipse.bpmn2</artifactId>
     </dependency>
+
+    <!-- REST -->
     <dependency>
       <groupId>org.kie.remote</groupId>
-      <artifactId>kie-services-remote</artifactId>
+      <artifactId>kie-remote-services</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-jaxrs</artifactId>
     </dependency>
 
     <!-- Guvnor -->
@@ -758,6 +786,18 @@
     <dependency>
       <groupId>org.guvnor</groupId>
       <artifactId>guvnor-project-builder</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.guvnor</groupId>
+      <artifactId>guvnor-message-console-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.guvnor</groupId>
+      <artifactId>guvnor-message-console-backend</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.guvnor</groupId>
+      <artifactId>guvnor-message-console-client</artifactId>
     </dependency>
 
     <!-- Kie Workbench -->
@@ -811,19 +851,6 @@
     <dependency>
       <groupId>org.kie.workbench.widgets</groupId>
       <artifactId>kie-wb-config-resource-widget</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.kie.workbench.screens</groupId>
-      <artifactId>kie-wb-common-message-console-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.kie.workbench.screens</groupId>
-      <artifactId>kie-wb-common-message-console-backend</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.kie.workbench.screens</groupId>
-      <artifactId>kie-wb-common-message-console-client</artifactId>
     </dependency>
 
     <!-- Dashboard -->
@@ -912,5 +939,31 @@
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-jaxrs</artifactId>
     </dependency>
+     		<dependency>
+			<groupId>org.apache.chemistry.opencmis</groupId>
+			<artifactId>chemistry-opencmis-client-impl</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.chemistry.opencmis</groupId>
+					<artifactId>chemistry-opencmis-commons-impl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.chemistry.opencmis</groupId>
+					<artifactId>chemistry-opencmis-commons-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.chemistry.opencmis</groupId>
+			<artifactId>chemistry-opencmis-commons-impl</artifactId>
+		</dependency>
+        <dependency>
+    	  <groupId>org.apache.chemistry.opencmis</groupId>
+	      <artifactId>chemistry-opencmis-commons-api</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.chemistry.opencmis</groupId>
+        	<artifactId>chemistry-opencmis-client-bindings</artifactId>
+    	</dependency>
 	</dependencies>
 </project>
