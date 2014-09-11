@@ -376,6 +376,16 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<artifactId>cglib</artifactId>
+			<groupId>cglib</groupId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<artifactId>cglib-nodep</artifactId>
+			<groupId>cglib</groupId>
+			<version>2.2.2</version>
+		</dependency>
 
 		<!--All the following dependencies were copied from jbpm-console-ng -->
     <dependency>
@@ -636,6 +646,12 @@
     <dependency>
       <groupId>org.jboss.errai</groupId>
       <artifactId>errai-cdi-jetty</artifactId>
+      <exclusions>
+      	<exclusion>
+      		<artifactId>jetty-naming</artifactId>
+      		<groupId>org.mortbay.jetty</groupId>
+      	</exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
