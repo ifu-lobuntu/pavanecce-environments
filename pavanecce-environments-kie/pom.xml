@@ -603,11 +603,11 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.uberfire</groupId>
-			<artifactId>uberfire-panel-manager-nswe</artifactId>
-			<scope>provided</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.uberfire</groupId> -->
+<!-- 			<artifactId>uberfire-panel-manager-nswe</artifactId> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
 
 		<!-- Errai AS -->
 		<dependency>
@@ -632,16 +632,16 @@
 			<artifactId>errai-weld-integration</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.jboss.errai</groupId>
-			<artifactId>errai-cdi-jetty</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>jetty-naming</artifactId>
-					<groupId>org.mortbay.jetty</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.jboss.errai</groupId> -->
+<!-- 			<artifactId>errai-cdi-jetty</artifactId> -->
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<artifactId>jetty-naming</artifactId> -->
+<!-- 					<groupId>org.mortbay.jetty</groupId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>org.jboss.errai</groupId>
