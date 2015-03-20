@@ -1,0 +1,953 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.pavanecce</groupId>
+		<artifactId>pavanecce-environments-parent</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>pavanecce-environments-kie</artifactId>
+	<packaging>bundle</packaging>
+	<repositories>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Repository Group</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.kie</groupId>
+				<artifactId>kie-parent-with-dependencies</artifactId>
+				<version>6.3.0-SNAPSHOT</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<manifestLocation>META-INF</manifestLocation>
+					<instructions>
+						<Embed-Dependency>groupId=${pavanecce.environment.embeddedGroupIds};artifactId=!kie-bom</Embed-Dependency>
+						<Embed-Transitive>true</Embed-Transitive>
+						<Embed-Directory>libs</Embed-Directory>
+						<Embed-StripGroup>true</Embed-StripGroup>
+						<Import-Package>!*,
+							javax.xml.transform,
+							javax.xml.transform.dom,
+							javax.xml.transform.stream,
+							javax.security.auth.login,
+							javax.security.auth.callback,
+							javax.security.auth.spi,
+							javax.imageio.spi,
+							javax.security.auth,
+							org.w3c.dom,
+							org.xml.sax,
+							org.xml.sax.helpers,
+							javax.xml.parsers,
+							javax.naming,
+							javax.sql,
+							org.slf4j;version="[1.1.6,2)",
+						</Import-Package>
+						<_exportcontents>
+							com.thoughtworks.xstream;version="1.4.4",
+							javassist,
+							javassist.bytecode,
+							javassist.util.proxy,
+							javax.enterprise.event;version="1.0.0",
+							javax.enterprise.inject;version="1.0.0",
+							javax.enterprise.util;version="1.0.0",
+							javax.inject;version="1.0.0",
+							javax.jcr;version="2.0.0",
+							javax.jcr.lock;version="2.0.0",
+							javax.jcr.nodetype;version="2.0.0",
+							javax.jcr.observation;version="2.0.0",
+							javax.jcr.query;version="2.0.0",
+							javax.jcr.query.qom;version="2.0.0",
+							javax.jcr.retention;version="2.0.0",
+							javax.jcr.security;version="2.0.0",
+							javax.jcr.util;version="2.0.0",
+							javax.jcr.version;version="2.0.0",
+							javax.persistence;version="2.0.0",
+							javax.persistence.criteria;version="2.0.0",
+							javax.persistence.metamodel;version="2.0.0",
+							javax.persistence.spi;version="2.0.0",
+							javax.transaction;version="1.1.0",
+							net.sf.cglib.asm;version="2.2.2",
+							net.sf.cglib.asm.signature;version="2.2.2",
+							net.sf.cglib.beans;version="2.2.2",
+							net.sf.cglib.core;version="2.2.2",
+							net.sf.cglib.proxy;version="2.2.2",
+							net.sf.cglib.reflect;version="2.2.2",
+							net.sf.cglib.transform;version="2.2.2",
+							net.sf.cglib.transform.impl;version="2.2.2",
+							net.sf.cglib.util;version="2.2.2",
+							org.apache.commons.beanutils;version="1.8.3",
+							org.apache.commons.beanutils.converters;version="1.8.3",
+							org.apache.commons.beanutils.expression;version="1.8.3",
+							org.apache.commons.beanutils.locale;version="1.8.3",
+							org.apache.commons.beanutils.locale.converters;version="1.8.3",
+							org.apache.commons.collections;version="3.2.1",
+							org.apache.commons.collections.bag;version="3.2.1",
+							org.apache.commons.collections.bidimap;version="3.2.1",
+							org.apache.commons.collections.buffer;version="3.2.1",
+							org.apache.commons.collections.collection;version="3.2.1",
+							org.apache.commons.collections.comparators;version="3.2.1",
+							org.apache.commons.collections.functors;version="3.2.1",
+							org.apache.commons.collections.iterators;version="3.2.1",
+							org.apache.commons.collections.keyvalue;version="3.2.1",
+							org.apache.commons.collections.list;version="3.2.1",
+							org.apache.commons.collections.map;version="3.2.1",
+							org.apache.commons.collections.set;version="3.2.1",
+							org.apache.commons.digester;version="1.8.0",
+							org.apache.commons.digester.parser;version="1.8.0",
+							org.apache.commons.digester.plugins;version="1.8.0",
+							org.apache.commons.digester.plugins.strategies;version="1.8.0",
+							org.apache.commons.digester.substitution;version="1.8.0",
+							org.apache.commons.digester.xmlrules;version="1.8.0",
+							org.apache.commons.lang;version="2.6.0",
+							org.apache.commons.lang.builder;version="2.6.0",
+							org.apache.commons.lang.enum;version="2.6.0",
+							org.apache.commons.lang.enums;version="2.6.0",
+							org.apache.commons.lang.exception;version="2.6.0",
+							org.apache.commons.lang.math;version="2.6.0",
+							org.apache.commons.lang.mutable;version="2.6.0",
+							org.apache.commons.lang.reflect;version="2.6.0",
+							org.apache.commons.lang.text;version="2.6.0",
+							org.apache.commons.lang.time;version="2.6.0",
+							org.apache.jackrabbit.commons,
+							org.apache.jackrabbit.commons.cnd,
+							org.apache.jackrabbit.core;version="2.4.5",
+							org.apache.jackrabbit.core.observation;version="2.4.5",
+							org.drools.compiler.compiler,
+							org.drools.compiler.lang.descr,
+							org.drools.compiler.rule.builder,
+							org.drools.core,
+							org.drools.core.audit,
+							org.drools.core.audit.event,
+							org.drools.core.command.impl,
+							org.drools.core.common,
+							org.drools.core.impl,
+							org.drools.core.marshalling.impl,
+							org.drools.core.process.core,
+							org.drools.core.process.core.datatype,
+							org.drools.core.process.core.datatype.impl.type,
+							org.drools.core.process.core.impl,
+							org.drools.core.process.instance,
+							org.drools.core.process.instance.impl,
+							org.drools.core.rule,
+							org.drools.core.runtime.process,
+							org.drools.core.spi,
+							org.drools.core.xml,
+							org.drools.persistence,
+							org.drools.persistence.info,
+							org.drools.persistence.jpa,
+							org.drools.persistence.jpa.marshaller,
+							org.hibernate,
+							org.hibernate.action.spi,
+							org.hibernate.annotations,
+							org.hibernate.annotations.common,
+							org.hibernate.collection.spi,
+							org.hibernate.ejb,
+							org.hibernate.engine.spi,
+							org.hibernate.event.spi,
+							org.hibernate.persister.entity,
+							org.hibernate.proxy,
+							org.hibernate.type,
+							org.jahia.pipelines;version="7.0.0",
+							org.jahia.services.usermanager;version="7.0.0",
+							org.jahia.services.workflow;version="7.0.0",
+							org.jahia.services.workflow.jbpm;version="7.0.0",
+							org.jahia.services.workflow.jbpm.command;version="7.0.0",
+							org.jahia.services.workflow.jbpm.custom;version="7.0.0",
+							org.jahia.services.workflow.jbpm.custom.email;version="7.0.0",
+							org.jbpm.compiler.xml,
+							org.jbpm.marshalling.impl,
+							org.jbpm.process.audit,
+							org.jbpm.process.builder,
+							org.jbpm.process.builder.dialect,
+							org.jbpm.process.builder.dialect.java,
+							org.jbpm.process.core,
+							org.jbpm.process.core.context.exception,
+							org.jbpm.process.core.context.variable,
+							org.jbpm.process.core.event,
+							org.jbpm.process.core.impl,
+							org.jbpm.process.core.timer,
+							org.jbpm.process.instance,
+							org.jbpm.process.instance.context,
+							org.jbpm.process.instance.context.exception,
+							org.jbpm.process.instance.context.variable,
+							org.jbpm.process.instance.event,
+							org.jbpm.process.instance.impl,
+							org.jbpm.process.instance.timer,
+							org.jbpm.ruleflow.core,
+							org.jbpm.ruleflow.instance,
+							org.jbpm.runtime.manager.impl,
+							org.jbpm.services.task.commands,
+							org.jbpm.services.task.events,
+							org.jbpm.services.task.exception,
+							org.jbpm.services.task.identity,
+							org.jbpm.services.task.impl,
+							org.jbpm.services.task.impl.model,
+							org.jbpm.services.task.lifecycle.listeners,
+							org.jbpm.services.task.query,
+							org.jbpm.services.task.utils,
+							org.jbpm.services.task.wih,
+							org.jbpm.services.task.wih.util,
+							org.jbpm.shared.services.api,
+							org.jbpm.shared.services.impl,
+							org.jbpm.shared.services.impl.events,
+							org.jbpm.workflow.core,
+							org.jbpm.workflow.core.impl,
+							org.jbpm.workflow.core.node,
+							org.jbpm.workflow.instance,
+							org.jbpm.workflow.instance.impl,
+							org.jbpm.workflow.instance.impl.factory,
+							org.jbpm.workflow.instance.node,
+							org.joda.time;version="1.6.0",
+							org.joda.time.base;version="1.6.0",
+							org.joda.time.chrono;version="1.6.0",
+							org.joda.time.convert;version="1.6.0",
+							org.joda.time.field;version="1.6.0",
+							org.joda.time.format;version="1.6.0",
+							org.joda.time.tz;version="1.6.0",
+							org.kie.api,
+							org.kie.api.builder,
+							org.kie.api.command,
+							org.kie.api.definition.process,
+							org.kie.api.event.process,
+							org.kie.api.io,
+							org.kie.api.marshalling,
+							org.kie.api.persistence.jpa,
+							org.kie.api.runtime,
+							org.kie.api.runtime.manager,
+							org.kie.api.runtime.process,
+							org.kie.api.runtime.rule,
+							org.kie.api.task,
+							org.kie.api.task.model,
+							org.kie.internal.command,
+							org.kie.internal.io,
+							org.kie.internal.process,
+							org.kie.internal.runtime,
+							org.kie.internal.runtime.manager,
+							org.kie.internal.runtime.manager.context,
+							org.kie.internal.task.api,
+							org.kie.internal.task.api.model,
+							org.kie.spring,
+							org.kie.spring.persistence,
+							org.mvel2,
+							org.springframework.beans.factory;version="3.2.8",
+							org.springframework.core.io;version="3.2.8",
+							org.springframework.transaction;version="3.2.8",
+							org.springframework.transaction.support;version="3.2.8",
+						</_exportcontents>
+						<Bundle-SymbolicName>org.pavanecce.environments.kie</Bundle-SymbolicName>
+					</instructions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<inherited>false</inherited>
+				<executions>
+					<execution>
+						<id>copy-dependencies-sources</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<silent>true</silent>
+							<classifier>sources</classifier>
+							<outputDirectory>${project.basedir}/libs</outputDirectory>
+							<stripVersion>false</stripVersion>
+							<failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<includeGroupIds>${pavanecce.environment.commaSeparatedembeddedGroupIds}</includeGroupIds>
+							<excludeTransitive>false</excludeTransitive>
+							<excludeScope>provided</excludeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<inherited>false</inherited>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<silent>true</silent>
+							<outputDirectory>${project.basedir}/libs</outputDirectory>
+							<stripVersion>false</stripVersion>
+							<failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<includeGroupIds>${pavanecce.environment.commaSeparatedembeddedGroupIds}</includeGroupIds>
+							<excludeTransitive>false</excludeTransitive>
+							<excludeScope>provided</excludeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.ops4j.pax.logging</groupId>
+			<artifactId>pax-logging-api</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+		<!-- TODO This is a problem. Jahia uses cglib 2.2 along with an incompatible 
+			version of ASM - 4.1 -->
+		<!-- dependency> <artifactId>cglib</artifactId> <groupId>cglib</groupId> 
+			<version>3.1</version> <version>${jbpm.version}</version> </dependency> <dependency> 
+			<artifactId>cglib-nodep</artifactId> <groupId>cglib</groupId> <version>2.2.2</version> 
+			</dependency -->
+		<dependency>
+			<groupId>org.apache</groupId>
+			<artifactId>jackrabbit-ocm</artifactId>
+			<version>2.0.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>cglib</artifactId>
+					<groupId>cglib</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>javax.jcr</groupId>
+			<artifactId>jcr</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.jackrabbit</groupId>
+			<artifactId>jackrabbit-api</artifactId>
+			<version>2.4.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.jackrabbit</groupId>
+			<artifactId>jackrabbit-core</artifactId>
+			<version>2.4.5</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.derby</groupId>
+					<artifactId>derby</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-dbcp</groupId>
+					<artifactId>commons-dbcp</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<artifactId>cglib</artifactId>
+			<groupId>cglib</groupId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<artifactId>cglib-nodep</artifactId>
+			<groupId>cglib</groupId>
+			<version>2.2.2</version>
+		</dependency>
+
+		<!--All the following dependencies were copied from jbpm-console-ng -->
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-ci</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.ant</groupId>
+					<artifactId>ant</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-services-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-kie-services</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-services-cdi</artifactId>
+		</dependency>
+
+		<!-- Manstis hackathon -->
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-wb-scorecard-xls-editor-client</artifactId>
+		</dependency>
+
+		<!-- jBPM Console Panels -->
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-human-tasks-client</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-human-tasks-backend</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>jboss-transaction-api_1.1_spec</artifactId>
+					<groupId>org.jboss.spec.javax.transaction</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-human-tasks-admin-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-human-tasks-admin-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-human-tasks-forms-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-human-tasks-forms-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-business-domain-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-business-domain-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-process-runtime-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-process-runtime-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-executor-service-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-executor-service-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-bpm-home-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-generic-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-asset-mgmt-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-documents-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-documents-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-documents-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-wb-workitems-editor-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-wb-workitems-editor-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-form-modeler-document</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-documents-client</artifactId>
+		</dependency>
+
+		<!-- jBPM Designer -->
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-designer-client</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-jdk14</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j-over-slf4j</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-designer-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-designer-backend</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>log4j-over-slf4j</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-jdk14</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+		<!-- UberFire -->
+		<dependency>
+			<groupId>org.uberfire</groupId>
+			<artifactId>uberfire-all</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.uberfire</groupId>
+			<artifactId>uberfire-workbench-processors</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.uberfire</groupId> -->
+<!-- 			<artifactId>uberfire-panel-manager-nswe</artifactId> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+
+		<!-- Errai AS -->
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-jboss-as-support</artifactId>
+		</dependency>
+
+		<!-- CDI Integration Modules -->
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-cdi-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-javax-enterprise</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-weld-integration</artifactId>
+		</dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.jboss.errai</groupId> -->
+<!-- 			<artifactId>errai-cdi-jetty</artifactId> -->
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<artifactId>jetty-naming</artifactId> -->
+<!-- 					<groupId>org.mortbay.jetty</groupId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-ui</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-data-binding</artifactId>
+		</dependency>
+
+		<!-- CDI Development Utils -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+
+		<!-- Weld Modules -->
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.solder</groupId>
+			<artifactId>solder-impl</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.solder</groupId>
+			<artifactId>solder-logging</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- GWT and GWT Extensions -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Rouge imports to avoid OSGi errors -->
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-xjc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.transaction</groupId>
+			<artifactId>jboss-transaction-api_1.1_spec</artifactId>
+		</dependency>
+		<!-- it's needed for hosted mode only and will be filtered out by assembly -->
+		<dependency>
+			<groupId>org.codehaus.btm</groupId>
+			<artifactId>btm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-shared-services</artifactId>
+		</dependency>
+
+		<!--Miscellaneous -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-bpmn2-emfextmodel</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>org.eclipse.bpmn2</artifactId>
+		</dependency>
+
+		<!-- REST -->
+		<dependency>
+			<groupId>org.kie.remote</groupId>
+			<artifactId>kie-remote-services</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+		</dependency>
+
+		<!-- Guvnor -->
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-services-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-m2repo-editor-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-m2repo-editor-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-m2repo-editor-backend</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-project-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-project-backend</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-workingset-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-workingset-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-project-builder</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-message-console-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-message-console-backend</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.guvnor</groupId>
+			<artifactId>guvnor-message-console-client</artifactId>
+		</dependency>
+
+		<!-- Kie Workbench -->
+		<dependency>
+			<groupId>org.kie.workbench.screens</groupId>
+			<artifactId>kie-wb-common-project-explorer-backend</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.workbench.screens</groupId>
+			<artifactId>kie-wb-common-project-explorer-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.workbench.screens</groupId>
+			<artifactId>kie-wb-common-project-editor-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.workbench.screens</groupId>
+			<artifactId>kie-wb-common-project-editor-backend</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.workbench.screens</groupId>
+			<artifactId>kie-wb-common-project-imports-editor-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie.workbench.services</groupId>
+			<artifactId>kie-wb-common-datamodel-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie.workbench.services</groupId>
+			<artifactId>kie-wb-common-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie.workbench.widgets</groupId>
+			<artifactId>kie-wb-common-ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.workbench.services</groupId>
+			<artifactId>kie-wb-common-services-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.workbench.services</groupId>
+			<artifactId>kie-wb-common-services-backend</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.workbench.widgets</groupId>
+			<artifactId>kie-wb-metadata-widget</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.workbench.widgets</groupId>
+			<artifactId>kie-wb-config-resource-widget</artifactId>
+		</dependency>
+
+		<!-- Dashboard -->
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-dashboard-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-dashboard-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-console-ng-dashboard-api</artifactId>
+		</dependency>
+
+		<!-- formModeler dependencies -->
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-form-modeler-app</artifactId>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-form-modeler-renderer-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-form-modeler-renderer-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-form-modeler-renderer-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-form-modeler-editor-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-form-modeler-editor-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-form-modeler-editor-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-form-modeler-form-provider</artifactId>
+		</dependency>
+		<!-- Data Modeller -->
+		<dependency>
+			<groupId>org.kie.workbench.screens</groupId>
+			<artifactId>kie-wb-common-data-modeller-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie.workbench.screens</groupId>
+			<artifactId>kie-wb-common-data-modeller-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie.workbench.screens</groupId>
+			<artifactId>kie-wb-common-data-modeller-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-form-modeler-data-modeler</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.servlet.jstl</groupId>
+			<artifactId>jboss-jstl-api_1.2_spec</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.chemistry.opencmis</groupId>
+			<artifactId>chemistry-opencmis-client-impl</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.chemistry.opencmis</groupId>
+					<artifactId>chemistry-opencmis-commons-impl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.chemistry.opencmis</groupId>
+					<artifactId>chemistry-opencmis-commons-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.chemistry.opencmis</groupId>
+			<artifactId>chemistry-opencmis-commons-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.chemistry.opencmis</groupId>
+			<artifactId>chemistry-opencmis-commons-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.chemistry.opencmis</groupId>
+			<artifactId>chemistry-opencmis-client-bindings</artifactId>
+		</dependency>
+	</dependencies>
+</project>
